@@ -46,6 +46,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/uuid@npm:8.3.0":
+  version: 8.3.0
+  resolution: "@types/uuid@npm:8.3.0"
+  checksum: 620985aed8fdb4aed153daca5235f4303457a67a4d181efac0021712eabd9edd7e88895f79730c0e651effde7633b1b61e49a81519ac8d4e75019d2ac9b6412f
+  languageName: node
+  linkType: hard
+
 "abbrev@npm:1":
   version: 1.1.1
   resolution: "abbrev@npm:1.1.1"
@@ -198,6 +205,7 @@ __metadata:
   dependencies:
     express: ^4.17.1
     nodemon: ^2.0.7
+    uuidv4: ^6.2.6
   languageName: unknown
   linkType: soft
 
@@ -2248,12 +2256,31 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"uuid@npm:8.3.2":
+  version: 8.3.2
+  resolution: "uuid@npm:8.3.2"
+  bin:
+    uuid: dist/bin/uuid
+  checksum: aed2bcef341f95635f308fea8831fb9038b18c485fe7e71feb89d2e05602dfecad0cb6f2246fae096d4da425cca6e8a71056f28abd97ad98cf770a2018853248
+  languageName: node
+  linkType: hard
+
 "uuid@npm:^3.3.2":
   version: 3.4.0
   resolution: "uuid@npm:3.4.0"
   bin:
     uuid: ./bin/uuid
   checksum: 1ce3f37e214d6d0dc94a6a9663a0365013ace66bc3fd5b203e6f5d2eeb978aaee1192367222386345d30b4c6a447928c501121aa84c637724bf105ef57284949
+  languageName: node
+  linkType: hard
+
+"uuidv4@npm:^6.2.6":
+  version: 6.2.6
+  resolution: "uuidv4@npm:6.2.6"
+  dependencies:
+    "@types/uuid": 8.3.0
+    uuid: 8.3.2
+  checksum: 4550dda3e05bc0038b0df4f31bc75830b9ef40ef5a3d124c40fe81e29c8162af4f23fc467ce31d39d5fd6bec5d19beec336daf0d5549e65793b42a5f732ccec6
   languageName: node
   linkType: hard
 

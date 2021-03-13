@@ -1,26 +1,79 @@
-// Para começar a vizualizar alguma coisa no browser vamos :
+const { request, response } = require('express');
 
-// 1° Importar o express dentro de uma var chamada express 
 const express = require('express');
 
-// 2° Vamos declarar a var app que é igual a express, pronto sua aplicação esta criada 
+// função que cria um id unico universal
+const { uuid } = require('uuidv4');
+
 const app = express();
 
-// 3° com a variavel app. temos varias opções para observar as rotas, vamos usar hoje a get
-// O método get recebe como primeiro parametro qual endereço queremos observar 
-// o segundo parametro que ele recebe é uma função (requisação, reposta) => {}
-// A função acima precisa retornar alguma coisa:
-// vamos colocar o return, todo retorno que fazemos de uma rota precisa sempre utilizar o reponse 
-// porque o response que devolve uma resposta para parte visual
-// send permite retornamos um texto 
-app.get('/projects', (request, response) => {
-    return response.json({ message: 'Hello World'});
+app.use(express.json()); 
+
+const projects = []; 
+
+function logRequests(request, response, next) {
+    const { method, url } = request;
     
+    const logLabel = `[${method.toUpperCase()}] ${url}`;
+
+    console.log(logLabel);
+
+    return next();
+}
+
+app.use(logRequests);
+
+app.get('/projects', (request, response) => {
+     const { title } = request.query;
+
+     const results = title
+     ? projects.filter(project => project.title.includes(title))
+     : projects;
+     return response.json(results);
 });
 
-// se colocarmos apenas / sem o endereço roda do mesmo jeito 
-// nunca iremos retornar tambem um send(texto) diretamente 
-// vamos retornar um json ou um {vetor de objetos} ou [array]
+app.post('/projects', (request, response) => {
+    const { title, owner } = request.body;
+ 
+    const project = { id: uuid(), title, owner };
 
-// porta finalizada, para criar outras é so ir mudando o final
+    projects.push(project); 
+
+    return response.json(project);
+});
+
+app.put('/projects/:id', (request, response) => {
+    const { id } = request.params;
+    const { title, owner } = request.body;
+
+    const projectIndex = projects.findIndex(project => project.id == id);
+
+    if (projectIndex < 0) {
+       return response.status(400).json({ error: 'Project not found.' }) 
+    }
+    const project = {
+      id,
+      title,
+      owner,
+    };
+
+    projects[projectIndex] = project;
+
+    return response.json(project);
+});
+
+app.delete('/projects/:id', (request, response) => {
+    const { id } = request.params;
+
+    const projectIndex = projects.findIndex(project => project.id == id);
+
+    if (projectIndex < 0) {
+       return response.status(400).json({ error: 'Project not found.' }) 
+    }
+
+    projects.splice(projectIndex, 1);
+    
+    return response.status(204).send();
+});
+
 app.listen(3333);

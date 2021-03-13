@@ -38,7 +38,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",
           "packageDependencies": [
             ["express", "npm:4.17.1"],
-            ["nodemon", "npm:2.0.7"]
+            ["nodemon", "npm:2.0.7"],
+            ["uuidv4", "npm:6.2.6"]
           ],
           "linkType": "SOFT",
         }]
@@ -87,6 +88,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["@types/responselike", "npm:1.0.0"],
             ["@types/node", "npm:14.14.32"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@types/uuid", [
+        ["npm:8.3.0", {
+          "packageLocation": "./.yarn/cache/@types-uuid-npm-8.3.0-60b441a3d7-620985aed8.zip/node_modules/@types/uuid/",
+          "packageDependencies": [
+            ["@types/uuid", "npm:8.3.0"]
           ],
           "linkType": "HARD",
         }]
@@ -266,7 +276,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["backend", "workspace:."],
             ["express", "npm:4.17.1"],
-            ["nodemon", "npm:2.0.7"]
+            ["nodemon", "npm:2.0.7"],
+            ["uuidv4", "npm:6.2.6"]
           ],
           "linkType": "SOFT",
         }]
@@ -2605,6 +2616,24 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/uuid-npm-3.4.0-4fd8ef88ad-1ce3f37e21.zip/node_modules/uuid/",
           "packageDependencies": [
             ["uuid", "npm:3.4.0"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:8.3.2", {
+          "packageLocation": "./.yarn/cache/uuid-npm-8.3.2-eca0baba53-aed2bcef34.zip/node_modules/uuid/",
+          "packageDependencies": [
+            ["uuid", "npm:8.3.2"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["uuidv4", [
+        ["npm:6.2.6", {
+          "packageLocation": "./.yarn/cache/uuidv4-npm-6.2.6-1e58bda765-4550dda3e0.zip/node_modules/uuidv4/",
+          "packageDependencies": [
+            ["uuidv4", "npm:6.2.6"],
+            ["@types/uuid", "npm:8.3.0"],
+            ["uuid", "npm:8.3.2"]
           ],
           "linkType": "HARD",
         }]
