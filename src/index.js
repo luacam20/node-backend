@@ -1,5 +1,5 @@
 const { request, response } = require('express');
-
+const cors = require('cors');
 const express = require('express');
 
 // função que cria um id unico universal
@@ -7,6 +7,7 @@ const { uuid } = require('uuidv4');
 
 const app = express();
 
+app.use(cors());
 app.use(express.json()); 
 
 const projects = []; 
